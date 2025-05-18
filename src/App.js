@@ -4,7 +4,8 @@ import './App.css';
 import SearchIcon from './search.svg';
 import MovieCard from './MovieCard';
 
-const API_URL = 'http://www.omdbapi.com?apikey=8d96a48a'
+const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
+const API_URL = 'http://www.omdbapi.com?apikey=${API_KEY}';
 
 const App = () => {
     const [movies, setMovies] = useState([]);
@@ -37,7 +38,7 @@ const App = () => {
             } else {
                 searchMovies('You');
             }
-        }, 60); // 60ms delay
+        }, 200); // 60ms delay
 
         return () => clearTimeout(delayDebounceFn);
 
